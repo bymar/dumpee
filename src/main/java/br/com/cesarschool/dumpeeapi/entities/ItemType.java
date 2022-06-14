@@ -1,9 +1,9 @@
 package br.com.cesarschool.dumpeeapi.entities;
 
-import java.time.LocalDate;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,20 +14,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Waste {
+@Table(name = "dp_type")
+public class ItemType {
 
   @Id
+  @Column(name = "ID")
   private int id;
 
-  @OneToOne
-  private WasteType wasteType;
+  @Column(name = "NAME")
+  private String name;
 
-  @OneToOne
-  private WasteBrand wasteBrand;
-
-  private LocalDate fabricationYear;
-
-  private boolean condition;
-
-  private boolean working;
+  @Column(name = "CODE")
+  private long typeCode;
 }
