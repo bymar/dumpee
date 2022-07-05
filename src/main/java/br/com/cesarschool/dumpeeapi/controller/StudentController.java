@@ -1,6 +1,8 @@
 package br.com.cesarschool.dumpeeapi.controller;
 
+import br.com.cesarschool.dumpeeapi.controller.response.StudentResponse;
 import br.com.cesarschool.dumpeeapi.service.StudentService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentController {
 
   @Autowired
-  StudentService service;
+  private StudentService service;
 
   @GetMapping
-  public void getStudentInfo() {
-
+  public StudentResponse getStudentInfo() {
+    return StudentResponse
+        .builder()
+        .studentData(service.getAllStudents())
+        .build();
   }
 
   @PostMapping("/signup")
